@@ -24,6 +24,11 @@ jobs:
         shell: bash
         run: |
           ansible-galaxy collection install amazon.aws
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Validate Inventory File
+        run: |
+          ansible-inventory --inventory inventory.aws_ec2.yaml --list
       # - name: AWS AuthN
       #   uses: aws-actions/configure-aws-credentials@v4
       #   with:
