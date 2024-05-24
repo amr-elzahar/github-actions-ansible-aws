@@ -24,14 +24,14 @@ jobs:
         shell: bash
         run: |
           ansible-galaxy collection install amazon.aws
+      - name: AWS AuthN
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Code Checkout
         uses: actions/checkout@v3
       - name: Validate Inventory File
         run: |
           ansible-inventory --inventory inventory.aws_ec2.yaml --list
-      # - name: AWS AuthN
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-region: us-east-1
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
