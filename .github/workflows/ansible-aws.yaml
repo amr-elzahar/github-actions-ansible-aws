@@ -6,7 +6,16 @@ jobs:
   ansible-deployment:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache
+        uses: actions/cache@v4
+        id: cache-deps
+        with:
+          path: |
+            /usr/lib/python3/dist-packages/ansible_collections
+            ~/.ansible/collections/ansible_collections
+          key: ${{ runner.os }}-deps
       - name: Install Ansible
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         shell: bash
         run: |
           sudo apt update && \
