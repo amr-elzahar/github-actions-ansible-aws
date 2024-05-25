@@ -13,6 +13,7 @@ jobs:
           path: |
             ~/.cache/
             ~/.ansible/
+            /usr/lib/python3/dist-packages/
           key: ${{ runner.name }}-deps
       - name: Install Ansible
         if: steps.cache-deps.outputs.cache-hit != 'true'
