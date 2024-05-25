@@ -39,6 +39,7 @@ jobs:
       - name: Write SSH Key Into File
         run: |
           echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ~/myPrivKeyFile
+          chmod 400
       - name: Run Ansible Playbook
         run: |
           ansible-playbook --private-key ~/myPrivKeyFile ec2-playbook.yaml
