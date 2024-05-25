@@ -14,7 +14,7 @@ jobs:
             ~/.cache/
             ~/.ansible/
             /usr/lib/python3/dist-packages/
-          key: ${{ runner.name }}-deps
+          key: ${{ runner.os }}-deps
       - name: Install Ansible
         if: steps.cache-deps.outputs.cache-hit != 'true'
         shell: bash
@@ -36,6 +36,9 @@ jobs:
       - name: Validate Inventory File
         run: |
           ansible-inventory --inventory inventory.aws_ec2.yaml --list
+      - name: Write SSH Key Into File
+        run: |
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ~/myPrivKeyFile
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook --private-key ${{ secrets.ANSIBLE_PRIVATE_KEY }} ec2-playbook.yaml
+          ansible-playbook --private-key ~/myPrivKeyFile ec2-playbook.yaml
