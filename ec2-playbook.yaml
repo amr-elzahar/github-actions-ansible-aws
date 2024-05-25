@@ -1,0 +1,12 @@
+---
+- name: AWS EC2 Playbbok
+  hosts: GitHubActionsKeyPair
+  remote_user: ubuntu
+  gather_facts: false
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - nginx
+        state: latest

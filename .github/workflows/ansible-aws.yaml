@@ -36,3 +36,6 @@ jobs:
       - name: Validate Inventory File
         run: |
           ansible-inventory --inventory inventory.aws_ec2.yaml --list
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook --private-key ${{ secrets.ANSIBLE_PRIVATE_KEY }} ec2-playbook.yaml
