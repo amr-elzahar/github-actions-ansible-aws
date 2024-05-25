@@ -1,3 +1,6 @@
 plugin: aws_ec2
 regions:
   - us-east-1
+
+keyed_groups:
+  - key: key_name
