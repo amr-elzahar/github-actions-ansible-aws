@@ -14,7 +14,7 @@
       ansible.builtin.copy:
         src: ./index.html
         mode: "0644"
-        dest: /var/www/html.index.html
+        dest: /var/www/html/index.html
       notify: Restart Nginx
   handlers:
     - name: Restart Nginx
