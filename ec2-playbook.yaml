@@ -10,3 +10,14 @@
         name:
           - nginx
         state: latest
+    - name: Serving Custome File
+      ansible.builtin.copy:
+        src: ./index.html
+        mode: "0644"
+        dest: /var/www/html.index.html
+      notify: Restart Nginx
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
