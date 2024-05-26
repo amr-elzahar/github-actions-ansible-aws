@@ -35,5 +35,5 @@ Before running the workflow, ensure the following prerequisites are met:
 
 ## Final Result
 
-This is how it looks like when you access AWS EC2 instanc using the public IP or the DNS name:
-![Nginx Custom Page](https://github.com/amr-elzahar/github-actions-ansible-aws/images/final_result.png)
+This is how it looks like when you access AWS EC2 instance using the public IP or the DNS name:
+![Nginx Custom Page](https://raw.githubusercontent.com/amr-elzahar/github-actions-ansible-aws/main/images/final_result.png)
